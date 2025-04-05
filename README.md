@@ -2,6 +2,10 @@
 
 This project is a web-based career prediction system that helps users identify suitable career paths based on their skills, interests, and aptitudes.
 
+## Website
+
+Visit the live website: https://kingprince005.github.io/AI-Based-Career-Prediction-System/
+
 ## Features
 
 - Interactive quiz for career assessment
