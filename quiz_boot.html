@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Prediction Quiz</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .progress {
+            height: 10px;
+            border-radius: 5px;
+        }
+        .question-container {
+            display: none;
+        }
+        .question-container.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            padding: 10px 30px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .form-check {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        .form-check:hover {
+            background-color: rgba(0,0,0,0.03);
+        }
+        .form-select {
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .quiz-header h2 {
+            color: #2d3748;
+            font-weight: 600;
+        }
+        .quiz-header p {
+            color: #718096;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5 mb-5">
+    <div class="card shadow-lg">
+        <div class="card-body p-4">
+            <div class="quiz-header">
+                <h2 class="mb-3">Career Prediction Quiz</h2>
+                <p class="text-muted">Discover your ideal career path with our AI-powered assessment</p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress mb-4">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 5%"></div>
+            </div>
+
+            <form id="careerQuiz">
+                <!-- Question 1 -->
+                <div class="mb-3">
+                    <label class="form-label">1. Which field excites you the most?</label>
+                    <select class="form-select" id="interest" name="interest" required>
+                        <option value="">-- Select --</option>
+                        <option value="IT">Technology & Coding</option>
+                        <option value="Finance">Finance & Investments</option>
+                        <option value="Marketing">Marketing & Sales</option>
+                        <option value="Healthcare">Healthcare & Medicine</option>
+                        <option value="Engineering">Engineering</option>
+                        <option value="Creative">Creative & Arts</option>
+                        <option value="Education">Teaching & Research</option>
+                    </select>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="mb-3">
+                    <label class="form-label">2. How do you rate your problem-solving skills?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="problemsolving" value="Poor" required>
+                        <label class="form-check-label">Poor</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="problemsolving" value="Average">
+                        <label class="form-check-label">Average</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="problemsolving" value="Good">
+                        <label class="form-check-label">Good</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="problemsolving" value="Excellent">
+                        <label class="form-check-label">Excellent</label>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="mb-3">
+                    <label class="form-label">3. Do you prefer working alone or in a team?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="workstyle" value="Alone" required>
+                        <label class="form-check-label">Alone</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="workstyle" value="Team">
+                        <label class="form-check-label">In a team</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="workstyle" value="Both">
+                        <label class="form-check-label">Both</label>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="mb-3">
+                    <label class="form-label">4. Which work environment suits you best?</label>
+                    <select class="form-select" id="work_env" name="work_env" required>
+                        <option value="">-- Select --</option>
+                        <option value="Corporate">Corporate Office</option>
+                        <option value="Remote">Remote/Freelancing</option>
+                        <option value="Field">Field Work</option>
+                        <option value="Creative">Creative Work (Design, Media)</option>
+                        <option value="Technical">Technical Lab/Engineering</option>
+                    </select>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="mb-3">
+                    <label class="form-label">5. How do you handle deadlines?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="deadlines" value="Struggle" required>
+                        <label class="form-check-label">I struggle with deadlines</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="deadlines" value="Manageable">
+                        <label class="form-check-label">I manage but get stressed</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="deadlines" value="Good">
+                        <label class="form-check-label">I handle them well</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="deadlines" value="Thriving">
+                        <label class="form-check-label">I thrive under pressure</label>
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="mb-3">
+                    <label class="form-label">6. What is your biggest passion?</label>
+                    <select class="form-select" id="passion" name="passion" required>
+                        <option value="">-- Select --</option>
+                        <option value="Technology">Technology & Coding</option>
+                        <option value="Numbers">Finance & Data Analysis</option>
+                        <option value="Helping">Helping People (Healthcare, Teaching)</option>
+                        <option value="Creativity">Creative Arts & Media</option>
+                        <option value="Entrepreneurship">Starting My Own Business</option>
+                        <option value="Sports">Sports & Fitness</option>
+                    </select>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="mb-3">
+                    <label class="form-label">7. Are you comfortable with public speaking?</label>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="public_speaking" value="No" id="public_no">
+                        <label class="form-check-label" for="public_no">No, I avoid it</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="public_speaking" value="Sometimes" id="public_sometimes">
+                        <label class="form-check-label" for="public_sometimes">Sometimes, if necessary</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="public_speaking" value="Yes" id="public_yes">
+                        <label class="form-check-label" for="public_yes">Yes, I enjoy speaking to an audience</label>
+                    </div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="mb-3">
+                    <label class="form-label">8. Do you enjoy working with numbers and data?</label>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="numbers_data" value="Hate" id="numbers_hate" required>
+                        <label class="form-check-label" for="numbers_hate">Not at all</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="numbers_data" value="Neutral" id="numbers_neutral">
+                        <label class="form-check-label" for="numbers_neutral">Neutral</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="numbers_data" value="Love" id="numbers_love">
+                        <label class="form-check-label" for="numbers_love">Yes, I love analyzing data</label>
+                    </div>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="mb-3">
+                    <label class="form-label">9. How important is creativity in your work?</label>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="creativity" value="Not Important" id="creativity_not_important" required>
+                        <label class="form-check-label" for="creativity_not_important">Not important</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="creativity" value="Somewhat" id="creativity_somewhat">
+                        <label class="form-check-label" for="creativity_somewhat">Somewhat important</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="creativity" value="Very Important" id="creativity_very_important">
+                        <label class="form-check-label" for="creativity_very_important">Very important</label>
+                    </div>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="mb-3">
+                    <label class="form-label">10. How do you handle stress?</label>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="stress_handling" value="Poorly" id="stress_poorly" required>
+                        <label class="form-check-label" for="stress_poorly">I struggle with stress</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="stress_handling" value="Manageable" id="stress_manageable">
+                        <label class="form-check-label" for="stress_manageable">I manage but feel overwhelmed</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="stress_handling" value="Good" id="stress_good">
+                        <label class="form-check-label" for="stress_good">I handle stress well</label>
+                    </div>
+                </div>
+
+                <!-- Question 11 -->
+                <div class="mb-3">
+                    <label class="form-label">11. Do you prefer a structured or flexible work schedule?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="work-schedule" value="Structured" required>
+                        <label class="form-check-label">Structured and routine-based</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="work-schedule" value="Flexible">
+                        <label class="form-check-label">Flexible and adaptable</label>
+                    </div>
+                </div>
+
+                <!-- Question 12 -->
+                <div class="mb-3">
+                    <label for="subject" class="form-label">12. Which subject do you enjoy the most?</label>
+                    <select class="form-select" id="subject" name="subject" required>
+                        <option value="">-- Select --</option>
+                        <option value="Science">Science & Technology</option>
+                        <option value="Business">Business & Economics</option>
+                        <option value="Arts">Arts & Humanities</option>
+                        <option value="Social">Social Sciences & Psychology</option>
+                    </select>
+                </div>
+
+                <!-- Question 13 -->
+                <div class="mb-3">
+                    <label class="form-label">13. How do you handle failure or setbacks?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="failure" value="Learn" required>
+                        <label class="form-check-label">I learn from my mistakes and improve</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="failure" value="Discouraged">
+                        <label class="form-check-label">I feel discouraged but try again</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="failure" value="Struggle">
+                        <label class="form-check-label">I struggle to bounce back</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="failure" value="Avoid">
+                        <label class="form-check-label">I avoid taking risks to prevent failure</label>
+                    </div>
+                </div>
+
+                <!-- Question 14 -->
+                <div class="mb-3">
+                    <label class="form-label">14. What kind of work-life balance do you prefer?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="work-life" value="Long Hours" required>
+                        <label class="form-check-label">I don't mind long hours if I love my job</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="work-life" value="Balanced">
+                        <label class="form-check-label">I prefer a balanced work-life routine</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="work-life" value="Minimal Stress">
+                        <label class="form-check-label">I want minimal work stress, even if the pay is low</label>
+                    </div>
+                </div>
+
+                <!-- Question 15 -->
+                <div class="mb-3">
+                    <label class="form-label">15. Which skill do you think is your strongest?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="skills" value="Communication" required>
+                        <label class="form-check-label">Communication & Public Speaking</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="skills" value="Logical">
+                        <label class="form-check-label">Logical & Analytical Thinking</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="skills" value="Creativity">
+                        <label class="form-check-label">Creativity & Innovation</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="skills" value="Leadership">
+                        <label class="form-check-label">Leadership & Management</label>
+                    </div>
+                </div>
+
+                <!-- Question 16 -->
+                <div class="mb-3">
+                    <label class="form-label">16. How do you approach decision-making?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="decision-making" value="Logic" required>
+                        <label class="form-check-label">I rely on logic and data</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="decision-making" value="Intuition">
+                        <label class="form-check-label">I follow my intuition</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="decision-making" value="Advice">
+                        <label class="form-check-label">I seek advice from others</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="decision-making" value="Struggle">
+                        <label class="form-check-label">I struggle with making decisions</label>
+                    </div>
+                </div>
+
+                <!-- Question 17 -->
+                <div class="mb-3">
+                    <label for="career-path" class="form-label">17. Would you prefer working in a corporate office or starting your own business?</label>
+                    <select class="form-select" id="career-path" name="career-path" required>
+                        <option value="">-- Select --</option>
+                        <option value="Corporate">Corporate Office</option>
+                        <option value="Entrepreneurship">Entrepreneurship</option>
+                        <option value="Freelancing">Freelancing/Remote Work</option>
+                        <option value="Not Sure">Not Sure</option>
+                    </select>
+                </div>
+
+                <!-- Question 18 -->
+                <div class="mb-3">
+                    <label class="form-label">18. How do you feel about working under pressure?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="pressure" value="Thrive" required>
+                        <label class="form-check-label">I thrive under pressure</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="pressure" value="Handle">
+                        <label class="form-check-label">I can handle it but prefer a relaxed environment</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="pressure" value="Struggle">
+                        <label class="form-check-label">I struggle with high-pressure situations</label>
+                    </div>
+                </div>
+
+                <!-- Question 19 -->
+                <div class="mb-3">
+                    <label for="impact" class="form-label">19. What impact do you want to make in your career?</label>
+                    <select class="form-select" id="impact" name="impact" required>
+                        <option value="">-- Select --</option>
+                        <option value="Innovate">Create something innovative</option>
+                        <option value="Help">Help and support others</option>
+                        <option value="Wealth">Make a lot of money</option>
+                        <option value="ProblemSolving">Solve complex problems</option>
+                    </select>
+                </div>
+
+                <!-- Question 20 -->
+                <div class="mb-3">
+                    <label class="form-label">20. Would you enjoy a career that requires continuous learning and upskilling?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="learning" value="Yes" required>
+                        <label class="form-check-label">Yes, I love learning and improving</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="learning" value="Sometimes">
+                        <label class="form-check-label">I'll learn only when necessary</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="learning" value="No">
+                        <label class="form-check-label">No, I prefer a stable skill set</label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary w-100">Submit Quiz</button>
+                </div>
+
+            </form>
+
+            <!-- Results Section (Initially Hidden) -->
+            <div id="quizResults" style="display: none;">
+                <h3 class="text-center mb-4">Your Career Analysis</h3>
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <div id="resultContent"></div>
+                        <div id="careerSuggestions" class="mt-4"></div>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <button type="button" class="btn btn-outline-primary" onclick="window.location.reload()">Take Quiz Again</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap 5 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Add prediction logic -->
+<script>
+document.getElementById('careerQuiz').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Collect all form data
+    const formData = new FormData(this);
+    const answers = {};
+    for (let [key, value] of formData.entries()) {
+        answers[key] = value;
+    }
+    
+    // Predict career based on answers
+    const prediction = predictCareer(answers);
+    
+    // Hide quiz form and show results
+    this.style.display = 'none';
+    const resultsDiv = document.getElementById('quizResults');
+    resultsDiv.style.display = 'block';
+    
+    // Display results
+    displayResults(prediction);
+});
+
+function predictCareer(answers) {
+    // Initialize scoring system for different career paths
+    const scores = {
+        'Technology': 0,
+        'Business': 0,
+        'Healthcare': 0,
+        'Creative': 0,
+        'Education': 0,
+        'Engineering': 0
+    };
+    
+    // Weight and score answers
+    if (answers.interest === 'IT') scores.Technology += 3;
+    if (answers.interest === 'Finance') scores.Business += 3;
+    if (answers.interest === 'Healthcare') scores.Healthcare += 3;
+    if (answers.interest === 'Creative') scores.Creative += 3;
+    if (answers.interest === 'Education') scores.Education += 3;
+    if (answers.interest === 'Engineering') scores.Engineering += 3;
+
+    // Score problem-solving skills
+    if (answers.problemsolving === 'Excellent') {
+        scores.Technology += 2;
+        scores.Engineering += 2;
+    }
+
+    // Score work style preference
+    if (answers.workstyle === 'Alone') {
+        scores.Technology += 1;
+        scores.Creative += 1;
+    } else if (answers.workstyle === 'Team') {
+        scores.Healthcare += 1;
+        scores.Education += 1;
+    }
+
+    // Find top career matches
+    const sortedScores = Object.entries(scores)
+        .sort(([,a], [,b]) => b - a)
+        .slice(0, 3);
+
+    return {
+        topCareers: sortedScores,
+        details: getCareerDetails(sortedScores[0][0])
+    };
+}
+
+function getCareerDetails(career) {
+    const details = {
+        'Technology': {
+            description: 'You show strong aptitude for technology and computing. Your analytical skills and problem-solving abilities make you well-suited for roles in software development, IT consulting, or cybersecurity.',
+            roles: ['Software Developer', 'Data Scientist', 'IT Consultant', 'Cybersecurity Analyst']
+        },
+        'Business': {
+            description: 'Your skills align well with business and finance. You have potential to excel in roles involving strategic thinking and financial analysis.',
+            roles: ['Financial Analyst', 'Business Consultant', 'Investment Banker', 'Project Manager']
+        },
+        'Healthcare': {
+            description: 'You demonstrate strong empathy and care for others. Healthcare roles would allow you to make a direct impact on people\'s lives.',
+            roles: ['Doctor', 'Nurse', 'Healthcare Administrator', 'Medical Researcher']
+        },
+        'Creative': {
+            description: 'Your creative thinking and artistic abilities suggest you would thrive in roles that allow for creative expression.',
+            roles: ['UX Designer', 'Art Director', 'Content Creator', 'Digital Marketing Specialist']
+        },
+        'Education': {
+            description: 'You show strong communication skills and a desire to help others learn. Educational roles would be fulfilling for you.',
+            roles: ['Teacher', 'Educational Consultant', 'Corporate Trainer', 'Curriculum Developer']
+        },
+        'Engineering': {
+            description: 'Your strong analytical and problem-solving skills make you well-suited for engineering roles.',
+            roles: ['Mechanical Engineer', 'Civil Engineer', 'Product Engineer', 'Systems Engineer']
+        }
+    };
+    return details[career] || details['Technology'];
+}
+
+function displayResults(prediction) {
+    const resultContent = document.getElementById('resultContent');
+    const careerSuggestions = document.getElementById('careerSuggestions');
+    
+    // Display top career match
+    const topCareer = prediction.topCareers[0][0];
+    const details = prediction.details;
+    
+    resultContent.innerHTML = `
+        <h4 class="mb-3">Your Top Career Match: ${topCareer}</h4>
+        <p class="lead">${details.description}</p>
+        <h5 class="mt-4">Recommended Roles:</h5>
+        <ul class="list-group list-group-flush">
+            ${details.roles.map(role => `<li class="list-group-item">${role}</li>`).join('')}
+        </ul>
+    `;
+    
+    // Display other matches
+    careerSuggestions.innerHTML = `
+        <h5>Other Potential Career Paths:</h5>
+        <div class="row mt-3">
+            ${prediction.topCareers.slice(1).map(([career, score]) => `
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h6 class="card-title">${career}</h6>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: ${score * 10}%" 
+                                     aria-valuenow="${score * 10}" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+// Update progress bar as user completes questions
+const formInputs = document.querySelectorAll('input, select');
+const progressBar = document.querySelector('.progress-bar');
+const totalQuestions = 20; // Update this if you change the number of questions
+
+formInputs.forEach(input => {
+    input.addEventListener('change', updateProgress);
+});
+
+function updateProgress() {
+    const answered = document.querySelectorAll('input:checked, select:valid').length;
+    const progress = (answered / totalQuestions) * 100;
+    progressBar.style.width = `${progress}%`;
+}
+</script>
+
+</body>
+</html>

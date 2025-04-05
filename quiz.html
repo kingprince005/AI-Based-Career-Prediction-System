@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Quiz - AI Career Prediction System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="counter-style.css">
+    <!-- Add AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="quiz-body">
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+
+    <!-- Header with back button -->
+    <header class="quiz-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+                </div>
+                <div class="col-md-4 text-center">
+                    <h1><i class="fas fa-robot"></i> AI Career Quiz</h1>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress tracker -->
+    <div class="progress-container" data-aos="fade-down">
+        <div class="progress-label">
+            <span>Your Progress</span>
+            <span class="progress-percentage">5%</span>
+        </div>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 5%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="question-counter">Question <span id="current-question">1</span> of <span id="total-questions">20</span></div>
+        <div class="progress-steps">
+            <div class="step active" data-step="1">1</div>
+            <div class="step" data-step="2">5</div>
+            <div class="step" data-step="3">10</div>
+            <div class="step" data-step="4">15</div>
+            <div class="step" data-step="5">20</div>
+        </div>
+    </div>
+
+    <!-- Quiz Container -->
+    <div class="container quiz-container" data-aos="fade-up">
+        <div class="quiz-card">
+            <div id="quiz">
+                <!-- Question will be displayed here -->
+                <div class="question-container">
+                    <h2 id="question">Loading question...</h2>
+                    <div class="options-container" id="options">
+                        <!-- Options will be populated here -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navigation Buttons -->
+            <div class="navigation-buttons">
+                <button id="prev-btn" class="btn btn-secondary" disabled><i class="fas fa-arrow-left"></i> Previous</button>
+                <button id="next-btn" class="btn btn-primary">Next <i class="fas fa-arrow-right"></i></button>
+                <button id="submit-btn" class="btn btn-success d-none">Submit Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay (Initially Hidden) -->
+    <div class="loading-overlay d-none" id="loading-overlay">
+        <div class="loading-container">
+            <div class="loading-icon">
+                <i class="fas fa-robot"></i>
+                <div class="loading-circle"></div>
+            </div>
+            <h3>Analyzing Your Responses</h3>
+            <p>Our AI is processing your answers to generate personalized career recommendations...</p>
+            <div class="loading-progress">
+                <div class="loading-bar"></div>
+            </div>
+            <div class="loading-status">
+                <span id="loading-status-text">Processing question data...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result Container (Initially Hidden) -->
+    <div class="container result-container d-none" id="result-container">
+        <div class="result-card">
+            <div class="result-header">
+                <i class="fas fa-award result-icon"></i>
+                <h2>Your Career Prediction Results</h2>
+                <p>Based on your responses, we've analyzed your strengths and preferences</p>
+            </div>
+            <div class="result-content" id="result-content">
+                <!-- Results will be displayed here -->
+            </div>
+            <div class="action-buttons">
+                <button id="retake-btn" class="btn btn-secondary"><i class="fas fa-redo"></i> Retake Quiz</button>
+                <button id="home-btn" class="btn btn-primary"><i class="fas fa-home"></i> Back to Home</button>
+                <button id="share-btn" class="btn btn-info"><i class="fas fa-share-alt"></i> Share Results</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Help Button -->
+    <div class="floating-help">
+        <button class="help-btn"><i class="fas fa-question-circle"></i></button>
+        <div class="help-tooltip">Need help? Click here for assistance with the quiz.</div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2023 AI Career Predictor. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="footer-links">
+                        <a href="#"><i class="fas fa-shield-alt"></i> Privacy</a>
+                        <a href="#"><i class="fas fa-file-contract"></i> Terms</a>
+                        <a href="#"><i class="fas fa-question-circle"></i> FAQ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="Resuts/fixed_script.js"></script>
+    <script src="Resuts/prediction.js"></script>
+    <script>
+        // Initialize AOS animation library
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+
+            // Theme toggle functionality
+            const themeToggle = document.querySelector('.theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-mode');
+                    const icon = this.querySelector('i');
+                    if (document.body.classList.contains('dark-mode')) {
+                        icon.classList.remove('fa-moon');
+                        icon.classList.add('fa-sun');
+                    } else {
+                        icon.classList.remove('fa-sun');
+                        icon.classList.add('fa-moon');
+                    }
+                });
+            }
+
+            // Help button functionality
+            const helpBtn = document.querySelector('.help-btn');
+            if (helpBtn) {
+                helpBtn.addEventListener('click', function() {
+                    alert('AI Career Quiz Help:\n\n1. Answer all questions honestly for the best results.\n2. You can navigate between questions using the Previous and Next buttons.\n3. Your progress is saved automatically.\n4. After completing all questions, click Submit to get your personalized career recommendations.');
+                });
+            }
+
+            // Share button functionality
+            const shareBtn = document.getElementById('share-btn');
+            if (shareBtn) {
+                shareBtn.addEventListener('click', function() {
+                    if (navigator.share) {
+                        navigator.share({
+                            title: 'My AI Career Prediction Results',
+                            text: 'Check out my career prediction results!',
+                            url: window.location.href
+                        });
+                    } else {
+                        alert('Copy this link to share your results: ' + window.location.href);
+                    }
+                });
+            }
+            
+            // Submit button functionality
+            const submitBtn = document.getElementById('submit-btn');
+            if (submitBtn) {
+                // Remove any existing event listeners
+                const newSubmitBtn = submitBtn.cloneNode(true);
+                submitBtn.parentNode.replaceChild(newSubmitBtn, submitBtn);
+                
+                // Add our new event listener
+                newSubmitBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Check if all questions are answered
+                    if (validateQuiz()) {
+                        showLoadingOverlay();
+                    }
+                });
+            }
+        });
+
+        // Update the progress steps based on current question
+        function updateProgressSteps(currentQuestion) {
+            const steps = document.querySelectorAll('.progress-steps .step');
+            steps.forEach(step => {
+                step.classList.remove('active');
+                if (currentQuestion >= parseInt(step.getAttribute('data-step'))) {
+                    step.classList.add('active');
+                }
+            });
+        }
+
+        // Override the original updateProgressBar function
+        const originalUpdateProgressBar = window.updateProgressBar;
+        window.updateProgressBar = function(currentIndex, totalQuestions) {
+            if (originalUpdateProgressBar) {
+                originalUpdateProgressBar(currentIndex, totalQuestions);
+            }
+            
+            // Update our custom progress elements
+            const percentage = Math.round(((currentIndex + 1) / totalQuestions) * 100);
+            document.querySelector('.progress-percentage').textContent = percentage + '%';
+            updateProgressSteps(currentIndex + 1);
+        };
+        
+        // Function to validate the quiz
+        function validateQuiz() {
+            // Access the userAnswers array from the global scope
+            if (typeof userAnswers === 'undefined') {
+                console.error('userAnswers is not defined');
+                return false;
+            }
+            
+            const unansweredQuestions = userAnswers.findIndex(answer => answer === null);
+            
+            if (unansweredQuestions !== -1) {
+                // Show error and jump to first unanswered question
+                alert(`Please answer all questions before submitting. You have ${userAnswers.filter(a => a === null).length} unanswered questions.`);
+                currentQuestionIndex = unansweredQuestions;
+                loadQuestion(currentQuestionIndex);
+                return false;
+            }
+            
+            return true;
+        }
+        
+        // Function to show loading overlay with animations
+        function showLoadingOverlay() {
+            const loadingOverlay = document.getElementById('loading-overlay');
+            const loadingStatusText = document.getElementById('loading-status-text');
+            const loadingStatuses = [
+                "Processing question data...",
+                "Analyzing personality traits...",
+                "Matching with career profiles...",
+                "Generating recommendations...",
+                "Finalizing your results..."
+            ];
+            
+            // Show the loading overlay
+            loadingOverlay.classList.remove('d-none');
+            loadingOverlay.classList.add('fade-in');
+            
+            // Simulate loading progress with status updates
+            let currentStatus = 0;
+            const statusInterval = setInterval(function() {
+                if (currentStatus < loadingStatuses.length) {
+                    loadingStatusText.textContent = loadingStatuses[currentStatus];
+                    currentStatus++;
+                } else {
+                    clearInterval(statusInterval);
+                }
+            }, 1500);
+            
+            // Hide quiz containers
+            const quizContainer = document.querySelector('.quiz-container');
+            const progressContainer = document.querySelector('.progress-container');
+            
+            quizContainer.classList.add('fadeOut');
+            progressContainer.classList.add('fadeOut');
+            
+            setTimeout(function() {
+                quizContainer.classList.add('d-none');
+                progressContainer.classList.add('d-none');
+                
+                // Hide loading overlay and show results after 7.5 seconds
+                setTimeout(function() {
+                    loadingOverlay.classList.add('fade-out');
+                    
+                    setTimeout(function() {
+                        loadingOverlay.classList.add('d-none');
+                        
+                        // Show results
+                        const resultContainer = document.getElementById('result-container');
+                        resultContainer.classList.remove('d-none');
+                        resultContainer.classList.add('fadeIn');
+                        
+                        // Process and display results using the function from fixed_script.js
+                        processResults();
+                    }, 500);
+                }, 7500);
+            }, 500);
+        }
+    </script>
+</body>
+</html>

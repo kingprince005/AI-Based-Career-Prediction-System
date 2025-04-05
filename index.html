@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Career Prediction System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="home-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#"><i class="fas fa-robot"></i> AI Career Predictor</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="#home"><i class="fas fa-home me-1"></i>Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about"><i class="fas fa-info-circle me-1"></i>About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#features"><i class="fas fa-star me-1"></i>Features</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#how-it-works"><i class="fas fa-cogs me-1"></i>How It Works</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#careers"><i class="fas fa-briefcase me-1"></i>Careers</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#testimonials"><i class="fas fa-comment me-1"></i>Testimonials</a></li>
+                    </ul>
+                </div>
+                <a class="nav-link take-quiz-btn d-none d-lg-block" href="quiz.html"><i class="fas fa-play-circle me-1"></i>Take Quiz</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 fade-in">
+                    <span class="hero-icon"><i class="fas fa-rocket"></i></span>
+                    <h1 class="mb-4">Discover Your Ideal Career Path</h1>
+                    <p class="lead mb-4">Our AI-powered career prediction system analyzes your skills, preferences, and personality to recommend the perfect career path for you.</p>
+                    <div class="hero-buttons">
+                        <a href="quiz.html" class="btn btn-primary btn-lg">Start Assessment <i class="fas fa-arrow-right"></i></a>
+                        <a href="#how-it-works" class="btn btn-outline-light btn-lg">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-md-6 slide-in-right">
+                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Career Planning" class="img-fluid hero-image">
+                </div>
+            </div>
+        </div>
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header text-center fade-in">
+                <i class="fas fa-info-circle section-icon"></i>
+                <h2>About The AI Career Prediction System</h2>
+                <p>A revolutionary approach to career guidance</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6 slide-in-left">
+                    <div class="about-card">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="AI Prediction" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-md-6 slide-in-right">
+                    <div class="about-content">
+                        <h3>Why Choose Our System?</h3>
+                        <p>Our AI-Based Career Prediction System uses advanced artificial intelligence to analyze your unique set of skills, interests, personality traits, and work preferences to suggest career paths where you're most likely to succeed and find fulfillment.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> Personalized career recommendations</li>
+                            <li><i class="fas fa-check-circle"></i> AI-powered skill analysis</li>
+                            <li><i class="fas fa-check-circle"></i> Detailed career path insights</li>
+                            <li><i class="fas fa-check-circle"></i> Compatible with your personality</li>
+                            <li><i class="fas fa-check-circle"></i> Based on latest industry trends</li>
+                        </ul>
+                        <a href="quiz.html" class="btn btn-primary">Take the Assessment Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header text-center fade-in">
+                <i class="fas fa-star section-icon"></i>
+                <h2>Key Features</h2>
+                <p>What makes our career prediction system special</p>
+            </div>
+            <div class="row stagger-children">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Advanced AI Analysis</h3>
+                        <p>Our system uses sophisticated AI algorithms to analyze your responses and match them with career paths.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Data-Driven Insights</h3>
+                        <p>Recommendations based on real-world career data and industry trends for accurate predictions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h3>Personality Compatibility</h3>
+                        <p>Find careers that not only match your skills but also align with your personality type.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <h3>Career Path Mapping</h3>
+                        <p>Discover not just a job, but a complete career path with growth opportunities.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Skill Gap Analysis</h3>
+                        <p>Identify skills you need to develop to excel in your recommended career paths.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Emerging Careers</h3>
+                        <p>Stay ahead with recommendations that include emerging career options in technology and other fields.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Counter Section -->
+    <section class="counter-section">
+        <div class="container">
+            <div class="row fade-in">
+                <div class="col-md-3 col-sm-6">
+                    <div class="counter-item" data-count="25000">
+                        <i class="fas fa-users"></i>
+                        <div class="counter">0</div>
+                        <h3>Users Helped</h3>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="counter-item" data-count="150">
+                        <i class="fas fa-briefcase"></i>
+                        <div class="counter">0</div>
+                        <h3>Career Paths</h3>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="counter-item" data-count="92">
+                        <i class="fas fa-chart-line"></i>
+                        <div class="counter">0</div>
+                        <h3>Success Rate %</h3>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="counter-item" data-count="78">
+                        <i class="fas fa-award"></i>
+                        <div class="counter">0</div>
+                        <h3>Industries Covered</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="counter-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works-section">
+        <div class="container">
+            <div class="section-header text-center fade-in">
+                <i class="fas fa-cogs section-icon"></i>
+                <h2>How It Works</h2>
+                <p>Simple steps to discover your ideal career path</p>
+            </div>
+            <div class="steps-container stagger-children">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Take the Assessment</h3>
+                        <p>Complete our comprehensive 20-question assessment that evaluates your interests, skills, personality traits, and work preferences.</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>AI Analysis</h3>
+                        <p>Our advanced AI system analyzes your responses, identifying patterns and matching them with successful career profiles.</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Receive Recommendations</h3>
+                        <p>Get personalized career recommendations with detailed information about each career path, required skills, and growth potential.</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Explore Options</h3>
+                        <p>Explore alternative career paths that match your profile and learn about the specific roles within each career field.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5 fade-in">
+                <a href="quiz.html" class="btn btn-primary btn-lg">Start Your Assessment</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Categories Section -->
+    <section id="careers" class="careers-section">
+        <div class="container">
+            <div class="section-header text-center fade-in">
+                <i class="fas fa-briefcase section-icon"></i>
+                <h2>Career Categories</h2>
+                <p>Explore the diverse career paths our system can help you discover</p>
+            </div>
+            <div class="row stagger-children">
+                <div class="col-md-4">
+                    <div class="career-card scale-in">
+                        <div class="career-icon"><i class="fas fa-laptop-code"></i></div>
+                        <h3>Technology</h3>
+                        <p>Software Development, Data Science, Cybersecurity, AI/ML Engineering, and more.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="career-card scale-in">
+                        <div class="career-icon"><i class="fas fa-chart-line"></i></div>
+                        <h3>Business & Finance</h3>
+                        <p>Financial Analysis, Business Consulting, Project Management, Marketing, and more.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="career-card scale-in">
+                        <div class="career-icon"><i class="fas fa-heartbeat"></i></div>
+                        <h3>Healthcare</h3>
+                        <p>Medical Professionals, Healthcare Administration, Health Informatics, Research, and more.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="career-card scale-in">
+                        <div class="career-icon"><i class="fas fa-palette"></i></div>
+                        <h3>Creative Arts</h3>
+                        <p>Graphic Design, UX/UI Design, Content Creation, Digital Marketing, and more.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="career-card scale-in">
+                        <div class="career-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3>Education</h3>
+                        <p>Teaching, Educational Administration, E-Learning Development, and more.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="career-card scale-in">
+                        <div class="career-icon"><i class="fas fa-cogs"></i></div>
+                        <h3>Engineering</h3>
+                        <p>Civil Engineering, Mechanical Engineering, Electrical Engineering, and more.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="section-header text-center fade-in">
+                <i class="fas fa-quote-right section-icon"></i>
+                <h2>Success Stories</h2>
+                <p>What our users say about their career discovery journey</p>
+            </div>
+            <div class="row stagger-children">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson">
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <p>"Thanks to the AI Career Predictor, I discovered my passion for data science and made a successful career transition."</p>
+                            <h4>Sarah Johnson</h4>
+                            <div class="testimonial-role">Data Scientist @ Tech Co.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <img src="https://randomuser.me/api/portraits/men/28.jpg" alt="Michael Chen">
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <p>"I was unsure about my career path after graduation. This system helped me identify my strengths and find a fulfilling role."</p>
+                            <h4>Michael Chen</h4>
+                            <div class="testimonial-role">UX Designer @ Creative Studio</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-image">
+                            <img src="https://randomuser.me/api/portraits/women/56.jpg" alt="Emily Rodriguez">
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                            <p>"The career recommendations perfectly matched my personality and interests. I'm now thriving in a job I love!"</p>
+                            <h4>Emily Rodriguez</h4>
+                            <div class="testimonial-role">Project Manager @ Global Corp</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+        <div class="container text-center fade-in">
+            <div class="cta-content">
+                <i class="fas fa-paper-plane section-icon"></i>
+                <h2>Ready to Find Your Perfect Career?</h2>
+                <p>Take our assessment today and discover career paths that match your unique profile.</p>
+                <a href="quiz.html" class="btn btn-light btn-lg mt-4">Start Your Career Journey <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+        </div>
+        <div class="cta-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>AI Career Predictor</h3>
+                    <p>Using advanced AI to help individuals discover their ideal career paths through personalized recommendations.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h3>Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Career Guides</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for career tips and updates.</p>
+                    <form>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <div class="copyright">
+                        &copy; 2025 AI Career Predictor. All rights reserved. Powered by AI (Made by Prince)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Scroll Animation Script -->
+    <script>
+        // Function to check if element is in viewport
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+                rect.bottom >= 0
+            );
+        }
+        
+        // Activate animations when elements enter viewport
+        function activateAnimations() {
+            // Activate single element animations
+            document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in, .rotate-in').forEach(element => {
+                if (isInViewport(element) && !element.classList.contains('active')) {
+                    element.classList.add('active');
+                }
+            });
+            
+            // Activate staggered children animations
+            document.querySelectorAll('.stagger-children').forEach(parent => {
+                if (isInViewport(parent) && !parent.classList.contains('active')) {
+                    parent.classList.add('active');
+                }
+            });
+        }
+        
+        // Counter animation
+        function animateCounters() {
+            document.querySelectorAll('.counter-item').forEach(counter => {
+                if (isInViewport(counter) && !counter.classList.contains('counted')) {
+                    const countElement = counter.querySelector('.counter');
+                    const targetCount = parseInt(counter.getAttribute('data-count'));
+                    const duration = 2000; // 2 seconds
+                    
+                    let startCount = 0;
+                    const startTime = performance.now();
+                    
+                    function updateCount(currentTime) {
+                        const elapsedTime = currentTime - startTime;
+                        const progress = Math.min(elapsedTime / duration, 1);
+                        
+                        const currentCount = Math.floor(progress * targetCount);
+                        countElement.textContent = currentCount.toLocaleString();
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            countElement.textContent = targetCount.toLocaleString();
+                            counter.classList.add('counted');
+                        }
+                    }
+                    
+                    requestAnimationFrame(updateCount);
+                }
+            });
+        }
+        
+        // Animate floating shapes
+        function animateShapes() {
+            const shapes = document.querySelectorAll('.shape');
+            shapes.forEach(shape => {
+                const randomX = Math.random() * 10 - 5;
+                const randomY = Math.random() * 10 - 5;
+                const randomDelay = Math.random() * 2;
+                const randomTime = 3 + Math.random() * 2;
+                
+                shape.style.setProperty('--random-x', `${randomX}px`);
+                shape.style.setProperty('--random-y', `${randomY}px`);
+                shape.style.setProperty('--random-delay', `${randomDelay}s`);
+                shape.style.setProperty('--random-time', `${randomTime}s`);
+            });
+        }
+        
+        // Initialize animations
+        function init() {
+            // Activate animations immediately for elements above the fold
+            activateAnimations();
+            animateCounters();
+            animateShapes();
+            
+            // Add scroll event listener
+            window.addEventListener('scroll', function() {
+                activateAnimations();
+                animateCounters();
+            });
+        }
+        
+        // Run when document is loaded
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html> 
