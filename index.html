@@ -8,16 +8,290 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="home-style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+    .navbar {
+        padding: 0.5rem 0;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #374151;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+    }
+
+    .user-avatar i {
+        color: white;
+        font-size: 1.2rem;
+    }
+
+    .dropdown-menu {
+        background-color: #1f2937;
+        border: 1px solid #374151;
+    }
+
+    .dropdown-item {
+        color: white;
+        padding: 8px 20px;
+    }
+
+    .dropdown-item:hover {
+        background-color: #374151;
+        color: white;
+    }
+
+    .dropdown-divider {
+        border-color: #374151;
+    }
+
+    .btn-link {
+        text-decoration: none;
+    }
+
+    .btn-link:hover {
+        text-decoration: none;
+        opacity: 0.8;
+    }
+
+    
+    @media (max-width: 991.98px) {
+        .navbar-nav {
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+        
+        .nav-item {
+            width: 100%;
+            text-align: center;
+            margin: 0.5rem 0;
+        }
+        
+        .nav-buttons-container {
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .take-quiz-btn {
+            width: 100%;
+            text-align: center;
+        }
+        
+        #userSection {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+    
+    .navbar-brand {
+        font-size: 1.5rem;
+        padding-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+    
+    .navbar-brand i {
+        margin-right: 0.3rem;
+        font-size: 1.4rem;
+    }
+    
+    .navbar-nav {
+        gap: 0.2rem;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        margin-right: 0;
+    }
+    
+    .nav-item {
+        display: block;
+        white-space: nowrap;
+        margin-right: 0;
+    }
+    
+    .nav-link {
+        padding: 0.3rem 0.4rem;
+        font-size: 0.75rem;
+        color: white !important;
+    }
+    
+    .nav-link i {
+        margin-right: 0.2rem;
+        font-size: 0.7rem;
+    }
+    
+    .take-quiz-btn {
+        padding: 0.3rem 0.6rem;
+        margin-right: 0.3rem;
+        border-radius: 30px;
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
+    
+    .uiverse-button {
+        margin: 0 0.2rem;
+        padding: 0.3rem 0.6rem;
+        width: 5em;
+        height: 2em;
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
+    
+    .nav-buttons-container {
+        padding-right: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        margin-left: 0.3rem;
+    }
+    
+    .navbar-container {
+        position: relative;
+        padding: 0.3rem 0.5rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .navbar-collapse {
+        flex-grow: 0;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .navbar-brand {
+        font-size: 2rem;
+        padding-left: 1rem;
+        margin-right: 2rem;
+        font-weight: bold;
+    }
+
+    .navbar-brand i {
+        margin-right: 0.5rem;
+        font-size: 1.8rem;
+    }
+
+    .navbar-nav {
+        gap: 0.75rem;
+    }
+
+    .nav-link {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .nav-link i {
+        margin-right: 0.4rem;
+        font-size: 0.85rem;
+    }
+
+    .take-quiz-btn {
+        padding: 0.5rem 1rem;
+        margin-right: 1rem;
+        border-radius: 30px;
+        font-size: 0.875rem;
+        transition: all 0.3s ease;
+    }
+
+    .uiverse-button {
+        margin: 0 0.4rem;
+        padding: 0.5rem 1rem;
+        width: 8em;
+        height: 2.75em;
+        border-radius: 30em;
+        font-size: 0.875rem;
+        font-family: inherit;
+        border: none;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        box-shadow: 6px 6px 12px #c5c5c5,
+                    -6px -6px 12px #ffffff;
+    }
+
+    .nav-buttons-container {
+        padding-right: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .user-avatar {
+        width: 35px;
+        height: 35px;
+        margin-right: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #userSection {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+        
+    .uiverse-button::before { 
+        content: ''; 
+        width: 0; 
+        height: 3em; 
+        border-radius: 30em; 
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        background-image: linear-gradient(to right, #ff8a00 0%, #ffc300 100%); /* Changed to orange gradient */
+        transition: .5s ease; 
+        display: block; 
+        z-index: -1; 
+    } 
+    
+    .uiverse-button:hover::before { 
+        width: 9em; 
+    }
+    
+    .login-button {
+        background-color: #f8f9fa;
+        color: #212529;
+    }
+    
+    .login-button:hover {
+        color: white; /* Text changes to white on hover */
+    }
+    
+    .signup-button {
+        background-color: #0d6efd;
+        color: white;
+    }
+
+    .navbar-container {
+        position: relative;
+        padding: 0.5rem 1rem;
+        width: 100%;
+    }
+</style>
 </head>
 <body>
     <!-- Header Section -->
     <header class="header">
         <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container">
-                <a class="navbar-brand" href="#"><i class="fas fa-robot"></i> AI Career Predictor</a>
+            <div class="container navbar-container">
+                <a class="navbar-brand" href="#" style="margin-right: 2rem;">
+                    <i class="fas fa-robot"></i> AI Career Predictor
+                </a>
+                
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link" href="#home"><i class="fas fa-home me-1"></i>Home</a></li>
@@ -25,10 +299,16 @@
                         <li class="nav-item"><a class="nav-link" href="#features"><i class="fas fa-star me-1"></i>Features</a></li>
                         <li class="nav-item"><a class="nav-link" href="#how-it-works"><i class="fas fa-cogs me-1"></i>How It Works</a></li>
                         <li class="nav-item"><a class="nav-link" href="#careers"><i class="fas fa-briefcase me-1"></i>Careers</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#testimonials"><i class="fas fa-comment me-1"></i>Testimonials</a></li>
-                    </ul>
                 </div>
-                <a class="nav-link take-quiz-btn d-none d-lg-block" href="quiz.html"><i class="fas fa-play-circle me-1"></i>Take Quiz</a>
+                
+                <div class="nav-buttons-container">
+                    <a class="take-quiz-btn" href="quiz.html">
+                        <i class="fas fa-play-circle me-1"></i>Take Quiz
+                    </a>
+                    <div id="userSection">
+                        <!-- Login/Signup buttons will be here -->
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
@@ -75,10 +355,10 @@
                 <div class="col-md-6 slide-in-right">
                     <div class="about-content">
                         <h3>Why Choose Our System?</h3>
-                        <p>Our AI-Based Career Prediction System uses advanced artificial intelligence to analyze your unique set of skills, interests, personality traits, and work preferences to suggest career paths where you're most likely to succeed and find fulfillment.</p>
+                        <p>Our Career Prediction System uses advanced artificial intelligence to analyze your unique set of skills, interests, personality traits, and work preferences to suggest career paths where you're most likely to succeed and find fulfillment.</p>
                         <ul class="feature-list">
                             <li><i class="fas fa-check-circle"></i> Personalized career recommendations</li>
-                            <li><i class="fas fa-check-circle"></i> AI-powered skill analysis</li>
+                            <li><i class="fas fa-check-circle"></i> Better skill analysis</li>
                             <li><i class="fas fa-check-circle"></i> Detailed career path insights</li>
                             <li><i class="fas fa-check-circle"></i> Compatible with your personality</li>
                             <li><i class="fas fa-check-circle"></i> Based on latest industry trends</li>
@@ -104,8 +384,8 @@
                         <div class="feature-icon">
                             <i class="fas fa-brain"></i>
                         </div>
-                        <h3>Advanced AI Analysis</h3>
-                        <p>Our system uses sophisticated AI algorithms to analyze your responses and match them with career paths.</p>
+                        <h3>Advanced Analysis</h3>
+                        <p>Our system uses sophisticated algorithms to analyze your responses and match them with career paths.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -216,8 +496,8 @@
                 <div class="step-card">
                     <div class="step-number">2</div>
                     <div class="step-content">
-                        <h3>AI Analysis</h3>
-                        <p>Our advanced AI system analyzes your responses, identifying patterns and matching them with successful career profiles.</p>
+                        <h3>Better Analysis</h3>
+                        <p>Our advanced system analyzes your responses, identifying patterns and matching them with successful career profiles.</p>
                     </div>
                 </div>
                 <div class="step-card">
@@ -312,7 +592,7 @@
                         </div>
                         <div class="testimonial-content">
                             <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-                            <p>"Thanks to the AI Career Predictor, I discovered my passion for data science and made a successful career transition."</p>
+                            <p>"Thanks to the Career Predictor, I discovered my passion for data science and made a successful career transition."</p>
                             <h4>Sarah Johnson</h4>
                             <div class="testimonial-role">Data Scientist @ Tech Co.</div>
                         </div>
@@ -369,7 +649,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h3>AI Career Predictor</h3>
+                    <h3>Career Predictor</h3>
                     <p>Using advanced AI to help individuals discover their ideal career paths through personalized recommendations.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -412,7 +692,7 @@
             <div class="row mt-4">
                 <div class="col-12 text-center">
                     <div class="copyright">
-                        &copy; 2025 AI Career Predictor. All rights reserved. Powered by AI (Made by Prince)
+                        &copy; 2025 Career Predictor. All rights reserved. Powered by AI (Made by Prince)
                     </div>
                 </div>
             </div>
@@ -515,4 +795,765 @@
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
-</html> 
+</html>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">AI Career Prediction</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                <div id="userSection">
+                    <!-- This section will be dynamically updated -->
+                </div>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Add this script section at the end of your body tag -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSection = document.getElementById('userSection');
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (currentUser) {
+            // User is logged in - show avatar and name
+            userSection.innerHTML = `
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                        <div class="d-flex align-items-center">
+                            <div class="avatar-small me-2">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            ${currentUser.name || currentUser.email}
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                    </ul>
+                </li>
+            `;
+        } else {
+            // User is not logged in - show login/register buttons
+            userSection.innerHTML = `
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register.html">Register</a>
+                </li>
+            `;
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.href = 'index.html';
+    }
+</script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSection = document.getElementById('userSection');
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (currentUser) {
+            // User is logged in - show avatar and name
+            userSection.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-white dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            ${currentUser.fullName || currentUser.email}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
+            // User is not logged in - show login/register buttons
+            userSection.innerHTML = `
+                <button class="uiverse-button login-button" onclick="window.location.href='login.html'">Login</button>
+                <button class="uiverse-button signup-button" onclick="window.location.href='register.html'">Sign Up</button>
+            `;
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSection = document.getElementById('userSection');
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (currentUser) {
+            // User is logged in - show avatar and name
+            userSection.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-white dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            ${currentUser.fullName || currentUser.email}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
+            // User is not logged in - show login/register buttons
+            userSection.innerHTML = `
+                <button class="uiverse-button login-button" onclick="window.location.href='login.html'">Login</button>
+                <button class="uiverse-button signup-button" onclick="window.location.href='register.html'">Sign Up</button>
+            `;
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSection = document.getElementById('userSection');
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (currentUser) {
+            // User is logged in - show avatar and name
+            userSection.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-white dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            ${currentUser.fullName || currentUser.email}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
+            // User is not logged in - show login/register buttons
+            userSection.innerHTML = `
+                <button class="uiverse-button login-button" onclick="window.location.href='login.html'">Login</button>
+                <button class="uiverse-button signup-button" onclick="window.location.href='register.html'">Sign Up</button>
+            `;
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSection = document.getElementById('userSection');
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (currentUser) {
+            // User is logged in - show avatar and name
+            userSection.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-white dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            ${currentUser.fullName || currentUser.email}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
+            // User is not logged in - show login/register buttons
+            userSection.innerHTML = `
+                <button class="uiverse-button login-button" onclick="window.location.href='login.html'">Login</button>
+                <button class="uiverse-button signup-button" onclick="window.location.href='register.html'">Sign Up</button>
+            `;
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSection = document.getElementById('userSection');
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (currentUser) {
+            // User is logged in - show avatar and name
+            userSection.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-white dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            ${currentUser.fullName || currentUser.email}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
+            // User is not logged in - show login/register buttons
+            userSection.innerHTML = `
+                <button class="uiverse-button login-button" onclick="window.location.href='login.html'">Login</button>
+                <button class="uiverse-button signup-button" onclick="window.location.href='register.html'">Sign Up</button>
+            `;
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSection = document.getElementById('userSection');
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (currentUser) {
+            // User is logged in - show avatar and name
+            userSection.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-white dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            ${currentUser.fullName || currentUser.email}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
+            // User is not logged in - show login/register buttons
+            userSection.innerHTML = `
+                <button class="uiverse-button login-button" onclick="window.location.href='login.html'">Login</button>
+                <button class="uiverse-button signup-button" onclick="window.location.href='register.html'">Sign Up</button>
+            `;
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSection = document.getElementById('userSection');
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (currentUser) {
+            // User is logged in - show avatar and name
+            userSection.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-white dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            ${currentUser.fullName || currentUser.email}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
+            // User is not logged in - show login/register buttons
+            userSection.innerHTML = `
+                <button class="uiverse-button login-button" onclick="window.location.href='login.html'">Login</button>
+                <button class="uiverse-button signup-button" onclick="window.location.href='register.html'">Sign Up</button>
+            `;
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSection = document.getElementById('userSection');
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (currentUser) {
+            // User is logged in - show avatar and name
+            userSection.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-white dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            ${currentUser.fullName || currentUser.email}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
+            // User is not logged in - show login/register buttons
+            userSection.innerHTML = `
+                <button class="uiverse-button login-button" onclick="window.location.href='login.html'">Login</button>
+                <button class="uiverse-button signup-button" onclick="window.location.href='register.html'">Sign Up</button>
+            `;
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSection = document.getElementById('userSection');
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (currentUser) {
+            // User is logged in - show avatar and name
+            userSection.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-white dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            ${currentUser.fullName || currentUser.email}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
+            // User is not logged in - show login/register buttons
+            userSection.innerHTML = `
+                <button class="uiverse-button login-button" onclick="window.location.href='login.html'">Login</button>
+                <button class="uiverse-button signup-button" onclick="window.location.href='register.html'">Sign Up</button>
+            `;
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSection = document.getElementById('userSection');
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (currentUser) {
+            // User is logged in - show avatar and name
+            userSection.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-white dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            ${currentUser.fullName || currentUser.email}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
+            // User is not logged in - show login/register buttons
+            userSection.innerHTML = `
+                <button class="uiverse-button login-button" onclick="window.location.href='login.html'">Login</button>
+                <button class="uiverse-button signup-button" onclick="window.location.href='register.html'">Sign Up</button>
+            `;
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSection = document.getElementById('userSection');
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (currentUser) {
+            // User is logged in - show avatar and name
+            userSection.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-white dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            ${currentUser.fullName || currentUser.email}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
+            // User is not logged in - show login/register buttons
+            userSection.innerHTML = `
+                <button class="uiverse-button login-button" onclick="window.location.href='login.html'">Login</button>
+                <button class="uiverse-button signup-button" onclick="window.location.href='register.html'">Sign Up</button>
+            `;
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSection = document.getElementById('userSection');
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (currentUser) {
+            // User is logged in - show avatar and name
+            userSection.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-white dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            ${currentUser.fullName || currentUser.email}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
+            // User is not logged in - show login/register buttons
+            userSection.innerHTML = `
+                <button class="uiverse-button login-button" onclick="window.location.href='login.html'">Login</button>
+                <button class="uiverse-button signup-button" onclick="window.location.href='register.html'">Sign Up</button>
+            `;
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSection = document.getElementById('userSection');
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (currentUser) {
+            // User is logged in - show avatar and name
+            userSection.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-white dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            ${currentUser.fullName || currentUser.email}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
+            // User is not logged in - show login/register buttons
+            userSection.innerHTML = `
+                <button class="uiverse-button login-button" onclick="window.location.href='login.html'">Login</button>
+                <button class="uiverse-button signup-button" onclick="window.location.href='register.html'">Sign Up</button>
+            `;
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSection = document.getElementById('userSection');
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (currentUser) {
+            // User is logged in - show avatar and name
+            userSection.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-white dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            ${currentUser.fullName || currentUser.email}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
+            // User is not logged in - show login/register buttons
+            userSection.innerHTML = `
+                <button class="uiverse-button login-button" onclick="window.location.href='login.html'">Login</button>
+                <button class="uiverse-button signup-button" onclick="window.location.href='register.html'">Sign Up</button>
+            `;
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSection = document.getElementById('userSection');
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (currentUser) {
+            // User is logged in - show avatar and name
+            userSection.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-white dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            ${currentUser.fullName || currentUser.email}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
+            // User is not logged in - show login/register buttons
+            userSection.innerHTML = `
+                <button class="uiverse-button login-button" onclick="window.location.href='login.html'">Login</button>
+                <button class="uiverse-button signup-button" onclick="window.location.href='register.html'">Sign Up</button>
+            `;
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSection = document.getElementById('userSection');
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+        if (currentUser) {
+            // User is logged in - show avatar and name
+            userSection.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-link text-white dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            ${currentUser.fullName || currentUser.email}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        } else {
+            // User is not logged in - show login/register buttons
+            userSection.innerHTML = `
+                <button class="uiverse-button login-button" onclick="window.location.href='login.html'">Login</button>
+                <button class="uiverse-button signup-button" onclick="window.location.href='register.html'">Sign Up</button>
+            `;
+        }
+    });
+
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSection = document.getElementById('userSection');
+        
+        function updateUserSection() {
+            try {
+                const currentUser = localStorage.getItem('currentUser');
+                
+                if (currentUser) {
+                    const user = JSON.parse(currentUser);
+                    const firstLetter = user.email.charAt(0).toUpperCase();
+                    
+                    userSection.innerHTML = `
+                        <div class="d-flex align-items-center">
+                            <div style="width: 40px; height: 40px; background-color: #6366f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; cursor: pointer;" 
+                                 title="${user.email}">
+                                ${firstLetter}
+                            </div>
+                            <button onclick="handleLogout()" class="btn btn-outline-light btn-sm ms-2">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </button>
+                        </div>
+                    `;
+                } else {
+                    userSection.innerHTML = `
+                        <a href="login.html"><button class="uiverse-button login-button me-3">Log In</button></a>
+                        <a href="signup.html"><button class="uiverse-button signup-button">Sign Up</button></a>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error updating user section:', error);
+                userSection.innerHTML = `
+                    <a href="login.html"><button class="uiverse-button login-button me-3">Log In</button></a>
+                    <a href="signup.html"><button class="uiverse-button signup-button">Sign Up</button></a>
+                `;
+            }
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('currentUser');
+            updateUserSection();
+            window.location.href = 'index.html';
+        }
+
+        // Initial update
+        updateUserSection();
+
+        // Make handleLogout available globally
+        window.handleLogout = handleLogout;
+    });
+</script

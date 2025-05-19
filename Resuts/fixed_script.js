@@ -89,96 +89,6 @@ const quizQuestions = [
             "Following step-by-step instructions and guides",
             "By discussing and collaborating with others"
         ]
-    },
-    {
-        question: "Which of these would be most important to you in a job?",
-        options: [
-            "Intellectual challenge and continuous learning",
-            "Creativity and the ability to express yourself",
-            "Stability and work-life balance",
-            "Meaningful work that helps others"
-        ]
-    },
-    {
-        question: "How do you approach a new project?",
-        options: [
-            "Research thoroughly and create a detailed plan",
-            "Start with a creative vision and develop it along the way",
-            "Follow established processes and guidelines",
-            "Discuss with stakeholders and gather different perspectives"
-        ]
-    },
-    {
-        question: "What role do you usually take in a team?",
-        options: [
-            "Problem solver or technical expert",
-            "Creative thinker or innovator",
-            "Organizer or planner",
-            "Mediator or relationship builder"
-        ]
-    },
-    {
-        question: "How important is it for you to see the tangible results of your work?",
-        options: [
-            "Very important - I like to see concrete outcomes",
-            "Somewhat important - I value both tangible and intangible results",
-            "Less important - I'm comfortable with long-term, less visible impacts",
-            "It depends on the nature of the work"
-        ]
-    },
-    {
-        question: "How comfortable are you with taking risks?",
-        options: [
-            "I prefer calculated risks backed by data",
-            "I'm very comfortable taking creative risks",
-            "I prefer stability and minimizing risks",
-            "I'll take risks if they potentially benefit others"
-        ]
-    },
-    {
-        question: "How do you feel about public speaking and presentations?",
-        options: [
-            "Comfortable if I'm presenting factual or technical information",
-            "Excited to share creative ideas and inspire others",
-            "Prefer to work behind the scenes or in smaller groups",
-            "Enjoy it if it helps others or serves a clear purpose"
-        ]
-    },
-    {
-        question: "Which of these values is most important to you?",
-        options: [
-            "Innovation and advancement",
-            "Creativity and self-expression",
-            "Stability and reliability",
-            "Compassion and service to others"
-        ]
-    },
-    {
-        question: "How do you approach conflicts or disagreements?",
-        options: [
-            "Analyze the facts and find a logical solution",
-            "Look for creative compromises and new perspectives",
-            "Follow established protocols for conflict resolution",
-            "Focus on maintaining relationships and finding consensus"
-        ]
-    },
-    {
-        question: "What type of feedback do you prefer to receive?",
-        options: [
-            "Direct and detailed feedback focused on performance",
-            "Feedback that acknowledges my creative contributions",
-            "Clear guidelines on how to improve and meet expectations",
-            "Supportive feedback that considers my feelings and development"
-        ]
-    },
-    {
-        question: "How important is it for your work to align with your personal values?",
-        options: [
-            "Somewhat important - I focus more on intellectual challenges",
-            "Important - I need to express myself authentically",
-            "Important - I value consistency and reliability",
-            "Extremely important - my work must make a positive difference"
-        ]
     }
 ];
 
@@ -502,4 +412,49 @@ function retakeQuiz() {
         // Reset to first question
         loadQuestion(0);
     }, 500);
+}
+
+
+function storeQuizAttempt(answers, result) {
+    // Get current user
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (!currentUser) {
+        console.error('No user logged in');
+        return;
+    }
+
+    // Get existing attempts or initialize new array
+    const quizAttempts = JSON.parse(localStorage.getItem('quizAttempts') || '[]');
+    
+    // Create new attempt object
+    const attempt = {
+        email: currentUser.email,
+        timestamp: new Date().toISOString(),
+        answers: answers,
+        result: result
+    };
+    
+    // Add new attempt to array
+    quizAttempts.push(attempt);
+    
+    // Store updated attempts
+    localStorage.setItem('quizAttempts', JSON.stringify(quizAttempts));
+}
+
+// Modify the submit handler to store the attempt
+function handleQuizSubmit() {
+    if (validateQuiz()) {
+        // Store the attempt before showing results
+        storeQuizAttempt(userAnswers, calculateResult());
+        showLoadingOverlay();
+    }
+}
+
+// Submit button functionality
+const submitBtn = document.getElementById('submit-btn');
+if (submitBtn) {
+    submitBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        handleQuizSubmit();
+    });
 }
