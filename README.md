@@ -33,7 +33,3 @@ Visit the live website: https://kingprince005.github.io/AI-Based-Career-Predicti
 - `style.css`, `home-style.css`, `counter-style.css`, `animations.css` - Styling files
 - `script.js`, `interactive.js` - JavaScript functionality
 - `Results/` - Directory containing result data
-
-## License
-
-MIT 
